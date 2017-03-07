@@ -1,0 +1,86 @@
+! ------------------------------------------------------------------------------
+! Styling
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c
+
+! "Font to use" Set from: Default
+! rofi.font:                           mono 12
+! "Enable sidebar-mode" Set from: Default
+rofi.sidebar-mode:                   true
+! "Separator style (none, dash, solid)" Set from: Default
+rofi.separator-style:                solid
+! "Scrollbar width" Set from: Default
+ rofi.scrollbar-width:                2
+
+! "Margin between rows" Set from: Default
+! rofi.line-margin:                    2
+! "Padding within rows" Set from: Default
+! rofi.line-padding:                   1
+! "Window width" Set from: Default
+! rofi.width:                          50
+! "Number of lines" Set from: Default
+! rofi.lines:                          15
+! "Number of columns" Set from: Default
+! rofi.columns:                        1
+! "Border width" Set from: Default
+! rofi.bw:                             1
+! "Location on screen" Set from: Default
+! rofi.location:                       0
+! "Padding" Set from: Default
+! rofi.padding:                        5
+! "Y-offset relative to location" Set from: Default
+! rofi.yoffset:                        0
+! "X-offset relative to location" Set from: Default
+! rofi.xoffset:                        0
+
+! ------------------------------------------------------------------------------
+! Modes
+! ------------------------------------------------------------------------------
+! "Enabled modi" Set from: Default
+! rofi.modi:                           window,run,ssh
+! "Set the modi to combine in combi mode" Set from: Default
+! rofi.combi-modi:                     window,run
+
+! ------------------------------------------------------------------------------
+! Functionality
+! ------------------------------------------------------------------------------
+! "Terminal to use" Set from: Default
+rofi.terminal:                       sakura
+! "Ssh client to use" Set from: Default
+! rofi.ssh-client:                     ssh
+! "Ssh command to execute" Set from: Default
+! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+! "Run command to execute" Set from: Default
+! rofi.run-command:                    {cmd}
+! "Command to get extra run targets" Set from: Default
+! rofi.run-list-command:
+! "Run command to execute that runs in shell" Set from: Default
+! rofi.run-shell-command:              {terminal} -e {cmd}
+
+! "Scrolling method. (0: Page, 1: Centered)" Set from: Default
+ rofi.scroll-method:                  1
+
+! "Row height (in chars)" Set from: Default
+! rofi.eh:                             1
+
+
+! ------------------------------------------------------------------------------
+! Keybindings
+! ------------------------------------------------------------------------------
+! "Switch to the next mode." Set from: Default
+rofi.kb-mode-next:                   Alt+l,Control+Tab
+! "Switch to the previous mode." Set from: Default
+rofi.kb-mode-previous:               Alt+h,Control+Shift+Tab
+
+! "Select previous entry" Set from: Default
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Alt+k
+! "Select next entry" Set from: Default
+rofi.kb-row-down:                    Down,Control+n, Alt+j
+! "Go to the first entry" Set from: Default
+rofi.kb-row-first:                   Home,KP_Home,Alt+g
+! "Go to the last entry" Set from: Default
+rofi.kb-row-last:                    End,KP_End,Alt+G

@@ -1,3 +1,6 @@
 [dotfiles]
 repository = ~/Dotfiles
 packages = ['config']
+ignore = {
+    '.git',
+    '.gitignore' }
