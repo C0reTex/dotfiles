@@ -1,0 +1,313 @@
+# Should you change your keyboard layout somewhen, delete
+# this file and re-run i3-config-wizard(1).
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono, FontAwesome, Noto Emoji, 9
+
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec sakura
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -config ~/.config/rofi/config"
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h           focus left
+bindsym $mod+j           focus down
+bindsym $mod+k           focus up
+bindsym $mod+l           focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left        focus left
+bindsym $mod+Down        focus down
+bindsym $mod+Up          focus up
+bindsym $mod+Right       focus right
+
+# move focused window
+bindsym $mod+Shift+h     move  left
+bindsym $mod+Shift+j     move  down
+bindsym $mod+Shift+k     move  up
+bindsym $mod+Shift+l     move  right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left  move  left
+bindsym $mod+Shift+Down  move  down
+bindsym $mod+Shift+Up    move  up
+bindsym $mod+Shift+Right move  right
+
+# move container/workspace to RandR outputs
+bindsym $mod+x move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Ctrl+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# HIDE EDGE BORDERS
+#hide_edge_borders <none|vertical|horizontal|both>
+hide_edge_borders both
+
+# CHANGING BORDER STYLE
+new_window none
+bindsym $mod+b       border normal
+bindsym $mod+Shift+b border none
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+
+
+# focus the child container
+#bindsym $mod+d focus child
+
+#####
+# Defining workspaces
+#####
+
+set $W1  "1:&#xf120;"
+set $W2  "2:&#xf0c2;"
+set $W3  "3:&#xf13d;"
+set $W4  "4:&#xf108;"
+set $W5  "5:&#xf0e0;"
+set $W6  "6:&#xf13d;"
+set $W7  "7:&#xf13d;"
+set $W8  "8:&#xf13d;"
+set $W9  "9:&#xf028;"
+set $W10 "10:&#xf13d;"
+
+# Workspace names + allocate screen at start
+# HDMI2 + HDMI3
+workspace $W1 output HDMI2
+workspace $W2 output HDMI2
+workspace $W4 output HDMI3
+workspace $W5 output HDMI3
+workspace $W9 output HDMI3
+
+# switch to workspace
+bindsym $mod+1 workspace $W1
+bindsym $mod+2 workspace $W2
+bindsym $mod+3 workspace $W3
+bindsym $mod+4 workspace $W4
+bindsym $mod+5 workspace $W5
+bindsym $mod+6 workspace $W6
+bindsym $mod+7 workspace $W7
+bindsym $mod+8 workspace $W8
+bindsym $mod+9 workspace $W9
+bindsym $mod+0 workspace $W10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $W1
+bindsym $mod+Shift+2 move container to workspace $W2
+bindsym $mod+Shift+3 move container to workspace $W3
+bindsym $mod+Shift+4 move container to workspace $W4
+bindsym $mod+Shift+5 move container to workspace $W5
+bindsym $mod+Shift+6 move container to workspace $W6
+bindsym $mod+Shift+7 move container to workspace $W7
+bindsym $mod+Shift+8 move container to workspace $W8
+bindsym $mod+Shift+9 move container to workspace $W9
+bindsym $mod+Shift+0 move container to workspace $W10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, bring me out of here!' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize grow   width  10 px or 10 ppt
+        bindsym j resize grow   height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize shrink width  10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left  resize shrink width  10 px or 10 ppt
+        bindsym Down  resize grow   height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow   width  10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+mode "LVDS_only(0) WG(1) LinuxPool(2)" {
+        # LVDS only
+        bindsym 0     exec xrandr --output DP1 --off --output DP2 --off --output DP3 --off --output HDMI1 --off --output HDMI2 --off --output HDMI3 --off --output VGA1 --off --output LVDS1 --mode 1366x768 & nitrogen --restore
+
+        # Bessererstraße
+        bindsym 1     exec xrandr --output HDMI2 --mode 1920x1080 --right-of LVDS1 & nitrogen --restore
+
+        # Linux Pool
+        bindsym 2     exec xrandr --output DP1 --mode 2560x1440 --right-of LVDS1 & nitrogen --restore
+
+        # back to normal: Enteror, Escape, mod + p
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym x      mode "default"
+}
+
+# poweroff, lock or suspend system
+mode "poweroff(p) reboot(r) lock(l) kill-i3(k) xrandr(x)" {
+        bindsym p      exec poweroff
+        bindsym l      exec i3lock
+        bindsym r      exec reboot
+        bindsym k      exec i3-msg exit
+
+        # back to normal: Enteror, Escape, mod + p
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+p mode "default"
+
+        # Set xrandr
+        bindsym x mode "LVDS_only(0) WG(1) LinuxPool(2)"
+}
+
+bindsym $mod+p mode "poweroff(p) reboot(r) lock(l) kill-i3(k) xrandr(x)"
+
+
+# Enabling automatic back and forth
+workspace_auto_back_and_forth yes
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        font pango:DejaVu Sans Mono, Awesome 8
+        output         LVDS1
+#        status_command i3status --config ~/.i3status-small.conf
+        status_command py3status -c ~/.i3/i3status-small.conf
+        tray_output    primary
+        mode           hide
+}
+
+bar {
+        font pango:DejaVu Sans Mono, Awesome 8
+        output         HDMI2
+        output         HDMI3
+        output         VGA1
+        output         DP1
+        status_command py3status -c ~/.i3/i3status.conf
+        tray_output    primary
+}
+
+bar {
+        font pango:DejaVu Sans Mono, Awesome 8
+        output         HDMI2
+        output         HDMI3
+        output         VGA1
+        output         DP1
+        position top
+        workspace_buttons no
+        binding_mode_indicator no
+        status_command py3status -c ~/.i3/i3status-top.conf
+}
+
+# Assign Programms to workspaces
+assign [class="sakura"] $W1
+assign [class="chromium"] $W2
+assign [class="Rambox"] $W4
+assign [class="thunderbird N1"] $W5
+assign [class="Volume Control"] $W9
+
+# Start programms automatically
+exec --no-startup-id i3-msg 'workspace $W1; exec sakura'
+exec --no-startup-id i3-msg 'workspace $W5; exec thunderbird'
+exec --no-startup-id i3-msg 'workspace $W4; exec /usr/bin/rambox'
+exec --no-startup-id i3-msg 'workspace $W2; exec /usr/bin/chromium'
+exec blueman-applet
+
+#####
+# Touchpad related stuff
+#####
+# Disable Touchpad while typing
+exec /usr/bin/syndaemon -k -i 1 &
+
+# Disbale Touchpad by default
+exec synclient TouchpadOff=1
+
+
+#####
+# Manage volume
+#####
+# Built-in Audio (Sink 0)
+bindsym XF86AudioMute        exec pactl set-sink-mute   2 toggle # mute volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 2 +5%    # increase pulse volume by 5
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 2 -5%    # decrease pulse volume by 5
+# HDMI Audio (Sink 1)
+bindsym Ctrl+XF86AudioMute        exec pactl set-sink-mute   1 toggle # mute volume
+bindsym Ctrl+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%    # increase pulse volume by 5
+bindsym Ctrl+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%    # decrease pulse volume by 5
+
+## Spotify keybindings
+## Play/Pause
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+## Next
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+## Previous
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+## Stop
+bindsym XF86AudioStop exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+
+
+####
+# Misc
+####
+# Lock screen
+bindsym $mod+Escape exec i3lock
+
+# Wallpaper
+exec nitrogen --restore
+
+# twmn - Notification System
+exec twmnd
+
+###
+# Keybindings
+###
+# start ba working environmentj
+bindcode 156 exec sakura -x "tmuxinator start ba-thesis -name ba"
+

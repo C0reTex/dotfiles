@@ -1,0 +1,9 @@
+xmodmap -e "clear lock"
+xmodmap -e "remove control = Control_L"
+xmodmap -e "keycode 66 = Control_L"
+xmodmap -e "add control = Control_L"
+
+# using xcape tool for ( and ) when shift right or left is pressed
+xcape -e 'Shift_L=Shift_L;Shift_R=Shift_R;Control_L=Escape'
+
+
