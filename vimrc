@@ -1,3 +1,12 @@
+"         _________ _______
+"|\     /|\__   __/(       )
+"| )   ( |   ) (   | () () |
+"| |   | |   | |   | || || |
+"( (   ) )   | |   | |(_)| |
+" \ \_/ /    | |   | |   | |
+"  \   /  ___) (___| )   ( |
+"   \_/   \_______/|/     \|
+
 " General settings
 set encoding=utf-8
 set fileencoding=utf-8
@@ -314,5 +323,3 @@ au BufNewFile,BufRead,BufEnter   *.tex     setlocal spell    spelllang=en_us
 
 " --------------------
 " END of spellcheching }}}
-
-" vim:ft=vim
