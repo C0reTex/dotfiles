@@ -69,7 +69,7 @@ export PDF="zathura"
 export BROWSER="chromium"
 
 # defining user specific PATH variable
-export PATH="${PATH}:/home/doctor/.gem/ruby/2.3.0/bin"
+export PATH="${PATH}:/home/doctor/.gem/ruby/2.4.0/bin"
 
 ###################################
 # Starting Programms at the beginning

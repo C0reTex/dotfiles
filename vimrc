@@ -7,8 +7,7 @@
 "  \   /  ___) (___| )   ( |
 "   \_/   \_______/|/     \|
 
-" General settings
-set encoding=utf-8
+" General settings set encoding=utf-8
 set fileencoding=utf-8
 
 " Filetype
@@ -79,7 +78,7 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 " Syntastic
 let g:syntastic_javascript_closurecompiler_path = '~/.vim/closure-compiler/compiler.jar' " JS Validator
 " let g:syntastic_html_checkers                    = ['w3']                                 " HTML Validator
-let g:syntastic_tex_chktex_showmsgs              = 1
+let g:syntastic_tex_chktex_showmsgs = 1
 
 " Disable some Ruby warnings
 let g:syntastic_eruby_ruby_quiet_messages =
@@ -98,11 +97,13 @@ map <C-n> :NERDTreeToggle<CR>
 
 "" Completion
 """"
-
 " YouCompleteMe
 " https://github.com/Valloric/YouCompleteMe.
-let g:ycm_key_list_select_completion   = ["<tab>", "<Down>"]
-let g:ycm_key_list_previous_completion = ["<s-tab>", "<Up>"]
+let g:ycm_key_list_select_completion   = ['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+" Python completion
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 "" UltiSnips
 " Snippets can be found here:
@@ -121,6 +122,23 @@ let g:tex_flavor='latex'
 let g:Tex_CompileRule_pdf =  'pdflatex -interaction=nonstopmode $*'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf,bib,pdf'
+
+"" Vimtex completion with YCM
+""""
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+    \ 're!\\hyperref\[[^]]*',
+    \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+    \ 're!\\(include(only)?|input){[^}]*',
+    \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+    \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+    \ ]
+
 
 
 "" CamelCaseMotion
@@ -148,9 +166,35 @@ let g:instant_markdown_autostart = 0
 
 " Keybindings {{{
 " --------------------
-
 " make backspace work like most other apps
 set backspace=2
+
+
+" --------------------
+" Moving lines
+" --------------------
+execute "set <M-J>=\eJ"
+execute "set <M-K>=\eK"
+
+" Normal mode
+nnoremap <M-J> :m .+1<CR>==
+nnoremap <M-K> :m .-2<CR>==
+
+" Insert Mode
+inoremap <M-J> <Esc>:m .+1<CR>==gi
+inoremap <M-K> <Esc>:m .-2<CR>==gi
+
+" Visual mode
+vnoremap <M-J> :m '>+1<CR>gv=gv
+vnoremap <M-K> :m '<-2<CR>gv=gv
+
+" --------------------
+" Navigation through tabs
+" --------------------
+execute "set <M-}>=\e}"
+execute "set <M-{>=\e{"
+map <M-{> gT
+map <M-}> gt
 
 " --------------------
 " END of Keybindings }}}
@@ -196,9 +240,10 @@ set showbreak=↪
 " --------------------
 " END of Style related stuff }}}
 
-" Identing {{{
+" Identing and Tabs {{{
 " --------------------
 set autoindent
+set paste
 
 " insert spaces instead of tabs
 set softtabstop=4
@@ -266,7 +311,7 @@ set nohidden
 function! Browser()
 	let line = getline (".")
 	let line = matchstr (line, "http[^   ]*")
-	exec "!vivaldi-stable".line
+	exec "!chromium".line
 endfunction
 
 " --------------------
@@ -278,15 +323,10 @@ endfunction
 " Map 'W' on saving an already opened file without privileges
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-"Remap jj to escape in insert mode. Totaly AWESOME
+"Remap jj to escape in insert mode.
 inoremap jj <ESC>
 
 nnoremap JJJJ <Nop>
-
-
-" mapping : to . for easy and fast access to command-line mode
-" nore . :
-
 
 " Copy with STRG + C
 vnoremap <C-c> "*y
@@ -306,7 +346,6 @@ nnoremap <silent>         <C-a> :<C-u>call AddSubtract("\<C-a>", '')<CR>
 nnoremap <silent> <Leader><C-a> :<C-u>call AddSubtract("\<C-a>", 'b')<CR>
 nnoremap <silent>         <C-x> :<C-u>call AddSubtract("\<C-x>", '')<CR>
 nnoremap <silent> <Leader><C-x> :<C-u>call AddSubtract("\<C-x>", 'b')<CR>
-
 " --------------------
 " END Remap Keys }}}
 

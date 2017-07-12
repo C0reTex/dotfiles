@@ -110,7 +110,7 @@ bindsym $mod+space focus mode_toggle
 
 set $W1  "1:&#xf120;"
 set $W2  "2:&#xf0c2;"
-set $W3  "3:&#xf13d;"
+set $W3  "3:&#xf219;"
 set $W4  "4:&#xf108;"
 set $W5  "5:&#xf0e0;"
 set $W6  "6:&#xf13d;"
@@ -166,16 +166,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize grow   width  10 px or 10 ppt
-        bindsym j resize grow   height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize shrink width  10 px or 10 ppt
+        bindsym h resize grow   width  1 px or 1 ppt
+        bindsym j resize grow   height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize shrink width  1 px or 1 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left  resize shrink width  10 px or 10 ppt
-        bindsym Down  resize grow   height 10 px or 10 ppt
-        bindsym Up    resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow   width  10 px or 10 ppt
+        bindsym Left  resize shrink width  1 px or 1 ppt
+        bindsym Down  resize grow   height 1 px or 1 ppt
+        bindsym Up    resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow   width  1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -228,23 +228,25 @@ bar {
         font pango:DejaVu Sans Mono, Awesome 8
         output         LVDS1
 #        status_command i3status --config ~/.i3status-small.conf
-        status_command py3status -c ~/.i3/i3status-small.conf
+        status_command py3status -b -c ~/.i3/i3status-small.conf
         tray_output    primary
         mode           hide
 }
 
 bar {
         font pango:DejaVu Sans Mono, Awesome 8
+        output         HDMI1
         output         HDMI2
         output         HDMI3
         output         VGA1
         output         DP1
-        status_command py3status -c ~/.i3/i3status.conf
+        status_command py3status -b -c ~/.i3/i3status.conf
         tray_output    primary
 }
 
 bar {
         font pango:DejaVu Sans Mono, Awesome 8
+        output         HDMI1
         output         HDMI2
         output         HDMI3
         output         VGA1
